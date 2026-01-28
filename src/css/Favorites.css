@@ -1,15 +1,15 @@
-.favorites {
+.favorites-container {
+  max-width: 1200px; /* constrain page width */
+  margin: 0 auto;    /* center container */
   padding: 2rem;
-  width: 100%;
   box-sizing: border-box;
 }
 
-.favorites h2 {
-  margin-bottom: 2rem;
+.favorites-container h2 {
   text-align: center;
   font-size: 2.5rem;
-  color: #ffffff;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  margin-bottom: 2rem;
 }
 
 .favorites-empty {
@@ -22,30 +22,48 @@
 }
 
 .favorites-empty h2 {
-  margin-bottom: 1rem;
   font-size: 2rem;
+  margin-bottom: 1rem;
   color: #e50914;
 }
 
 .favorites-empty p {
   color: #999;
   font-size: 1.2rem;
-  line-height: 1.6;
 }
 
+/* ✅ True row-first grid */
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 220px); /* fixed-width columns */
+  gap: 0.75rem .1 rem; /* 0.5rem row-gap, 1rem column-gap */
+  justify-content: start; /* align rows to start */
+  width: 100%;
+}
 
-/* Animation for new favorites being added */
+/* Animation for new favorites */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .movies-grid > * {
   animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .favorites-container h2 {
+    font-size: 2rem;
+  }
+  .favorites-empty h2 {
+    font-size: 1.8rem;
+  }
+  .favorites-empty p {
+    font-size: 1rem;
+  }
+  .movies-grid {
+    grid-template-columns: repeat(auto-fill, 160px); /* smaller cards on mobile */
+    justify-content: center;
+  }
 }
